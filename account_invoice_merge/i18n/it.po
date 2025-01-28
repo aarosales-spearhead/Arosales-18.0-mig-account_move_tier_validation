@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: account-invoicing (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-21 02:57+0000\n"
-"PO-Revision-Date: 2023-12-24 18:34+0000\n"
+"PO-Revision-Date: 2025-01-28 18:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/"
 "OCA-account-invoicing-8-0/language/it/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: account_invoice_merge
 #: view:invoice.merge:account_invoice_merge.view_invoice_merge
@@ -51,7 +51,7 @@ msgstr "* fatture appartengono allo stesso partner"
 #. module: account_invoice_merge
 #: view:invoice.merge:account_invoice_merge.view_invoice_merge
 msgid "Are you sure you want to merge these invoices ?"
-msgstr "Sei sicuro che vuoi unire queste fatture?"
+msgstr "Si è sicuri che vuoi unire queste fatture?"
 
 #. module: account_invoice_merge
 #: code:addons/account_invoice_merge/wizard/invoice_merge.py:29
