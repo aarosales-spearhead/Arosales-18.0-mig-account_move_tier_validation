@@ -88,6 +88,4 @@ class TestAccountTierValidation(BaseCommon):
         with self.assertRaisesRegex(
             ValidationError, self.env._("You are not allowed to write those fields")
         ):
-            invoice._post()
-        # Calls _post method by passing context skip_validation_check set to True
-        invoice.action_post()
+            invoice.action_post()
