@@ -83,6 +83,7 @@ class TestAccountTierValidation(BaseCommon):
         )
         invoice.with_user(self.test_user_2.id).request_validation()
         invoice = invoice.with_user(self.test_user_1.id)
+        invoice.invalidate_model()
 
         invoice.validate_tier()
         with self.assertRaisesRegex(
