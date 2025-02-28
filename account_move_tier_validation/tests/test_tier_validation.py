@@ -89,6 +89,6 @@ class TestAccountTierValidation(BaseCommon):
             self.env.cr.commit()  
 
             invoice.validate_tier()
-    +
+    
             with self.assertRaises(ValidationError) as cm:
                 invoice.action_post()
