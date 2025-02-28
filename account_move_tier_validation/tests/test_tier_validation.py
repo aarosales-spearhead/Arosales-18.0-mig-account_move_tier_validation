@@ -85,7 +85,7 @@ class TestAccountTierValidation(BaseCommon):
             invoice.with_user(self.test_user_2.id).request_validation()
             invoice = invoice.with_user(self.test_user_1.id)
 
-            invoice.flush()  
+            self.env.cr.flush()
             self.env.cr.commit()  
 
             invoice.validate_tier()
