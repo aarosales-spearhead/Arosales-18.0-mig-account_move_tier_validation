@@ -48,6 +48,7 @@ addon | version | maintainers | summary
 [account_invoice_payment_retention](account_invoice_payment_retention/) | 14.0.1.2.0 |  | Account Invoice Payment Retention
 [account_invoice_pricelist](account_invoice_pricelist/) | 14.0.1.1.0 |  | Add partner pricelist on invoices
 [account_invoice_pricelist_sale](account_invoice_pricelist_sale/) | 14.0.1.0.0 |  | Module to fill pricelist from sales order in invoice.
+[account_invoice_qr_code_sepa_payconiq](account_invoice_qr_code_sepa_payconiq/) | 14.0.1.0.0 |  | Allows to generate a qr code for Payconiq provider containing the url
 [account_invoice_refund_line_selection](account_invoice_refund_line_selection/) | 14.0.1.0.3 |  | This module allows the user to refund specific lines in a invoice
 [account_invoice_refund_link](account_invoice_refund_link/) | 14.0.1.0.5 |  | Show links between refunds and their originator invoices
 [account_invoice_refund_reason](account_invoice_refund_reason/) | 14.0.1.1.1 | [![max3903](https://github.com/max3903.png?size=30px)](https://github.com/max3903) | Account Invoice Refund Reason.
