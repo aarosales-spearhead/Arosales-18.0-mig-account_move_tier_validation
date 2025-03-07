@@ -60,35 +60,36 @@ class TestAccountTierValidation(BaseCommon):
                 self.assertTrue(form.hide_post_button)
 
     def test_03_move_post(self):
-            self.env["tier.definition"].create(
-                {
-                    "model_id": self.env["ir.model"].search([("model", "=", "account.move")]).id,
-                    "definition_domain": "[('move_type', '=', 'out_invoice')]",
-                    "reviewer_id": self.test_user_1.id,
-                }
-            )
+        self.env["tier.definition"].create(
+            {
+                "model_id": self.env["ir.model"]
+                .search([("model", "=", "account.move")])
+                .id,
+                "definition_domain": "[('move_type', '=', 'out_invoice')]",
+                "reviewer_id": self.test_user_1.id,
+            }
+        )
 
-            partner = self.env["res.partner"].create({"name": "Test Partner"})
-            product = self.env["product.product"].create({"name": "Test product"})
+        partner = self.env["res.partner"].create({"name": "Test Partner"})
+        product = self.env["product.product"].create({"name": "Test product"})
 
-            invoice = self.env["account.move"].create(
-                {
-                    "move_type": "out_invoice",
-                    "partner_id": partner.id,
-                    "invoice_date_due": fields.Date.to_date("2024-01-01"),
-                    "invoice_line_ids": [
-                        (0, 0, {"product_id": product.id, "quantity": 1, "price_unit": 30})
-                    ],
-                }
-            )
+        invoice = self.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": partner.id,
+                "invoice_date_due": fields.Date.to_date("2024-01-01"),
+                "invoice_line_ids": [
+                    (0, 0, {"product_id": product.id, "quantity": 1, "price_unit": 30})
+                ],
+            }
+        )
 
-            invoice.with_user(self.test_user_2.id).request_validation()
-            invoice = invoice.with_user(self.test_user_1.id)
+        reviews = invoice.with_user(self.test_user_2.id).request_validation()
+        self.assertTrue(reviews)
+        with self.assertRaises(ValidationError):
+            invoice.action_post()
 
-            self.env.cr.flush()
-            self.env.cr.commit()  
-
-            invoice.validate_tier()
-    
-            with self.assertRaises(ValidationError) as cm:
-                invoice.action_post()
+        invoice = invoice.with_user(self.test_user_1.id)
+        invoice.validate_tier()
+        invoice.action_post()
+        self.assertEqual(invoice.state, "posted")
